@@ -1,6 +1,7 @@
-import { Controller, Get, Post, Body, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, Param } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Song } from './song.interface';
+
 
 @Controller('songs')
 export class SongsController {
@@ -23,5 +24,11 @@ export class SongsController {
   @Delete('all')
   async deleteAllSongs() {
     return this.songsService.deleteAll();
+  }
+
+
+  @Get('artista/:artista')
+  async getSongsByArtista(@Param('artista') artista: string) {
+    return this.songsService.findByArtista(artista);
   }
 }
