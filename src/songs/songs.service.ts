@@ -6,7 +6,9 @@ import { Song } from './song.interface';
 @Injectable()
 export class SongsService {
   constructor(@InjectModel('Song') private songModel: Model<Song>) {}
-
+  async findByArtista(artista: string): Promise<Song[]> {
+    return this.songModel.find({ artista }).exec();
+  }
   async insertMany(songs: Song[]): Promise<any> {
     try {
       return await this.songModel.insertMany(songs, { ordered: false });
