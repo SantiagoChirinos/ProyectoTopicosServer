@@ -55,9 +55,25 @@ El objetivo es demostrar buenas prácticas de modularidad, uso de MongoDB, auten
 - `GET /songs` — Lista todas las canciones.
 - `DELETE /songs/all` — Borra todas las canciones.
 
+
+### Feature Flags (Programación Orientada a Aspectos)
+- `GET /feature-flag` — Un solo endpoint que responde diferente según el rol del usuario autenticado:
+  - Si no envías token, responde como guest:
+    ```json
+    { "feature": "acceso-publico", "enabled": true, "role": "guest" }
+    ```
+  - Si envías token de usuario normal:
+    ```json
+    { "feature": "usuarios", "enabled": true, "role": "user" }
+    ```
+  - Si envías token de admin:
+    ```json
+    { "feature": "administradores", "enabled": true, "role": "admin" }
+    ```
+  - El endpoint detecta el rol usando el token JWT y responde acorde, demostrando un feature flag orientado a aspectos.
+
 ### Otros
 - `GET /data` — Datos de ejemplo.
-- `GET /feature-flag` — Endpoint para pruebas de feature flags.
 
 ## Configuración
 

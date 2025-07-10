@@ -13,7 +13,6 @@ exports.DataController = void 0;
 const common_1 = require("@nestjs/common");
 let DataController = class DataController {
     getData() {
-        return { message: 'Datos del servidor', data: [1, 2, 3, 4] };
     }
 };
 exports.DataController = DataController;

@@ -14,6 +14,10 @@ const featureflag_controller_1 = require("./featureflag.controller");
 const mongoose_1 = require("@nestjs/mongoose");
 const songs_module_1 = require("./songs/songs.module");
 const users_module_1 = require("./users/users.module");
+const role_flag_guard_1 = require("./feature-flags/role-flag.guard");
+const core_1 = require("@nestjs/core");
+const jwt_1 = require("@nestjs/jwt");
+const constants_1 = require("./auth/constants");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -24,9 +28,19 @@ exports.AppModule = AppModule = __decorate([
             songs_module_1.SongsModule,
             users_module_1.UsersModule,
             mongoose_1.MongooseModule.forRoot('mongodb://localhost:27017/proyecto-topicos'),
+            jwt_1.JwtModule.register({
+                secret: constants_1.jwtConstants.secret,
+                signOptions: { expiresIn: '1h' },
+            }),
         ],
         controllers: [data_controller_1.DataController, featureflag_controller_1.FeatureFlagController],
-        providers: [],
+        providers: [
+            core_1.Reflector,
+            {
+                provide: core_1.APP_GUARD,
+                useClass: role_flag_guard_1.RoleFlagGuard,
+            },
+        ],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
