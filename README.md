@@ -40,8 +40,8 @@ El objetivo es demostrar buenas prácticas de modularidad, uso de MongoDB, auten
   - Respuesta exitosa:
     ```json
     {
-      "access_token": "<jwt-token>",
-      "user": { "username": "admin", "role": "admin" }
+      "token_acceso": "<jwt-token>",
+      "usuario": { "usuario": "admin", "rol": "admin" }
     }
     ```
 
@@ -53,27 +53,26 @@ El objetivo es demostrar buenas prácticas de modularidad, uso de MongoDB, auten
 ### Canciones
 - `POST /songs/bulk` — Inserta varias canciones (no permite duplicados por nombre y artista).
 - `GET /songs` — Lista todas las canciones.
+- `GET /songs/artista/:artista` — Lista todas las canciones de un artista específico.
 - `DELETE /songs/all` — Borra todas las canciones.
 
 
 ### Feature Flags (Programación Orientada a Aspectos)
 - `GET /feature-flag` — Un solo endpoint que responde diferente según el rol del usuario autenticado:
-  - Si no envías token, responde como guest:
+  - Si no envías token, responde como invitado:
     ```json
-    { "feature": "acceso-publico", "enabled": true, "role": "guest" }
+    { "feature": "acceso-público", "enabled": true, "role": "invitado" }
     ```
   - Si envías token de usuario normal:
     ```json
-    { "feature": "usuarios", "enabled": true, "role": "user" }
+    { "feature": "solo usuarios", "enabled": true, "role": "usuario" }
     ```
-  - Si envías token de admin:
+  - Si envías token de administrador:
     ```json
-    { "feature": "administradores", "enabled": true, "role": "admin" }
+    { "feature": "solo administradores", "enabled": true, "role": "administrador" }
     ```
   - El endpoint detecta el rol usando el token JWT y responde acorde, demostrando un feature flag orientado a aspectos.
 
-### Otros
-- `GET /data` — Datos de ejemplo.
 
 ## Configuración
 

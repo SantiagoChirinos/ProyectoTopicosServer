@@ -27,7 +27,7 @@ let SongsController = class SongsController {
             return await this.songsService.insertMany(songs);
         }
         catch (error) {
-            return { success: false, message: error.message };
+            return { success: false, message: 'Error: ' + error.message };
         }
     }
     async deleteAllSongs() {

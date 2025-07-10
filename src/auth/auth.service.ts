@@ -13,7 +13,7 @@ export class AuthService {
     const user = await this.usersService.findByUsername(username);
     if (user && user.password === password) {
       // No uses password plano en producción
-      return { username: user.username, role: user.role };
+      return { usuario: user.username, rol: user.role };
     }
     return null;
   }
@@ -21,8 +21,8 @@ export class AuthService {
   async login(user: { username: string; role: string }) {
     const payload = { username: user.username, role: user.role };
     return {
-      access_token: this.jwtService.sign(payload),
-      user,
+      token_acceso: this.jwtService.sign(payload),
+      usuario: { usuario: user.username, rol: user.role },
     };
   }
 }
