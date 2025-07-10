@@ -1,4 +1,4 @@
-import {buscarNombres} from '../src/libreria'
+import {buscarNombres} from '../src'
 
 describe("organizarNombres prueba",()=>{
     let arrayNombres=["Juan", "María", "Carlos", "Lucía", "Pedro", "Sofía"];

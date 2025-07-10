@@ -19,7 +19,8 @@
     "mongoose": "^7.0.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
-    "proyectotopicoslibreria": "github:SantiagoChirinos/ProyectoTopicosLibreria#main"
+    "proyectotopicoslibreria": "github:SantiagoChirinos/ProyectoTopicosLibreria#hotfix/1.0.1",
+    "prueba-topicos": "github:SantiagoChirinos/pruebaTopicos#main"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",
