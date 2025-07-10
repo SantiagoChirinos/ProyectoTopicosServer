@@ -11,7 +11,7 @@ export class UsersController {
     try {
       return await this.usersService.insertMany(users);
     } catch (error) {
-      return { success: false, message: error.message };
+      return { success: false, message: 'Error: ' + error.message };
     }
   }
 
