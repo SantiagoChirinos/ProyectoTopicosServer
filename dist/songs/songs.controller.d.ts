@@ -5,4 +5,5 @@ export declare class SongsController {
     constructor(songsService: SongsService);
     getAllSongs(): Promise<Song[]>;
     insertSongs(songs: Song[]): Promise<any>;
+    deleteAllSongs(): Promise<any>;
 }

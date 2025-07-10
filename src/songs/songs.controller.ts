@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete } from '@nestjs/common';
 import { SongsService } from './songs.service';
 import { Song } from './song.interface';
 
@@ -18,5 +18,10 @@ export class SongsController {
     } catch (error) {
       return { success: false, message: error.message };
     }
+  }
+
+  @Delete('all')
+  async deleteAllSongs() {
+    return this.songsService.deleteAll();
   }
 }

@@ -7,3 +7,6 @@ export const SongSchema = new Schema({
   anio: { type: Number, required: true },
   reproducciones: { type: Number, required: true },
 });
+
+// Índice único para evitar duplicados por nombre y artista
+SongSchema.index({ nombre: 1, artista: 1 }, { unique: true });

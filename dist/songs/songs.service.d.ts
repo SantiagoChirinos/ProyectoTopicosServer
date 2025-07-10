@@ -5,4 +5,5 @@ export declare class SongsService {
     constructor(songModel: Model<Song>);
     insertMany(songs: Song[]): Promise<any>;
     findAll(): Promise<Song[]>;
+    deleteAll(): Promise<any>;
 }

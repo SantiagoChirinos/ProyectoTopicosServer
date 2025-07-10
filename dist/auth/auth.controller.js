@@ -22,7 +22,7 @@ let AuthController = class AuthController {
     async login(body) {
         const user = await this.authService.validateUser(body.username, body.password);
         if (user) {
-            return { success: true, user };
+            return this.authService.login(user);
         }
         return { success: false, message: 'Credenciales inválidas' };
     }

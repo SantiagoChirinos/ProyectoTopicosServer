@@ -6,15 +6,13 @@ export declare class AuthController {
         username: string;
         password: string;
     }): Promise<{
-        success: boolean;
+        access_token: string;
         user: {
             username: string;
             role: string;
         };
-        message?: undefined;
     } | {
         success: boolean;
         message: string;
-        user?: undefined;
     }>;
 }

@@ -11,12 +11,20 @@ const common_1 = require("@nestjs/common");
 const auth_controller_1 = require("./auth.controller");
 const auth_service_1 = require("./auth.service");
 const users_module_1 = require("../users/users.module");
+const jwt_1 = require("@nestjs/jwt");
+const constants_1 = require("./constants");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
 exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
-        imports: [users_module_1.UsersModule],
+        imports: [
+            users_module_1.UsersModule,
+            jwt_1.JwtModule.register({
+                secret: constants_1.jwtConstants.secret,
+                signOptions: { expiresIn: '1h' },
+            }),
+        ],
         controllers: [auth_controller_1.AuthController],
         providers: [auth_service_1.AuthService],
     })

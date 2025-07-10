@@ -9,4 +9,5 @@ exports.SongSchema = new mongoose_1.Schema({
     anio: { type: Number, required: true },
     reproducciones: { type: Number, required: true },
 });
+exports.SongSchema.index({ nombre: 1, artista: 1 }, { unique: true });
 //# sourceMappingURL=song.schema.js.map

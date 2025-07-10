@@ -30,6 +30,9 @@ let SongsController = class SongsController {
             return { success: false, message: error.message };
         }
     }
+    async deleteAllSongs() {
+        return this.songsService.deleteAll();
+    }
 };
 exports.SongsController = SongsController;
 __decorate([
@@ -45,6 +48,12 @@ __decorate([
     __metadata("design:paramtypes", [Array]),
     __metadata("design:returntype", Promise)
 ], SongsController.prototype, "insertSongs", null);
+__decorate([
+    (0, common_1.Delete)('all'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], SongsController.prototype, "deleteAllSongs", null);
 exports.SongsController = SongsController = __decorate([
     (0, common_1.Controller)('songs'),
     __metadata("design:paramtypes", [songs_service_1.SongsService])

@@ -26,13 +26,16 @@ let SongsService = class SongsService {
         }
         catch (error) {
             if (error.code === 11000 || error.writeErrors) {
-                throw new Error('Algunas o todas las canciones ya existen en la base de datos.');
+                throw new common_1.ConflictException('Algunas o todas las canciones ya existen en la base de datos.');
             }
             throw error;
         }
     }
     async findAll() {
         return this.songModel.find().exec();
+    }
+    async deleteAll() {
+        return this.songModel.deleteMany({});
     }
 };
 exports.SongsService = SongsService;
