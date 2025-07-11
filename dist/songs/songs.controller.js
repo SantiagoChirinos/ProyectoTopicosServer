@@ -33,6 +33,9 @@ let SongsController = class SongsController {
     async deleteAllSongs() {
         return this.songsService.deleteAll();
     }
+    async getSongsByArtista(artista) {
+        return this.songsService.findByArtista(artista);
+    }
 };
 exports.SongsController = SongsController;
 __decorate([
@@ -54,6 +57,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], SongsController.prototype, "deleteAllSongs", null);
+__decorate([
+    (0, common_1.Get)('artista/:artista'),
+    __param(0, (0, common_1.Param)('artista')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], SongsController.prototype, "getSongsByArtista", null);
 exports.SongsController = SongsController = __decorate([
     (0, common_1.Controller)('songs'),
     __metadata("design:paramtypes", [songs_service_1.SongsService])

@@ -20,6 +20,7 @@ exports.SongsModule = SongsModule = __decorate([
         imports: [mongoose_1.MongooseModule.forFeature([{ name: 'Song', schema: song_schema_1.SongSchema }])],
         providers: [songs_service_1.SongsService],
         controllers: [songs_controller_1.SongsController],
+        exports: [songs_service_1.SongsService],
     })
 ], SongsModule);
 //# sourceMappingURL=songs.module.js.map

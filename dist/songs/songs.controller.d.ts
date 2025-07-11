@@ -6,4 +6,5 @@ export declare class SongsController {
     getAllSongs(): Promise<Song[]>;
     insertSongs(songs: Song[]): Promise<any>;
     deleteAllSongs(): Promise<any>;
+    getSongsByArtista(artista: string): Promise<Song[]>;
 }

@@ -58,6 +58,20 @@ El objetivo es demostrar buenas prácticas de modularidad, uso de MongoDB, auten
 
 
 ### Feature Flags (Programación Orientada a Aspectos)
+  - Si no envías token, responde como invitado:
+    ```json
+    { "feature": "acceso-público", "enabled": true, "role": "invitado" }
+    ```
+  - Si envías token de usuario normal:
+    ```json
+    { "feature": "solo usuarios", "enabled": true, "role": "usuario" }
+    ```
+  - Si envías token de administrador:
+    ```json
+    { "feature": "solo administradores", "enabled": true, "role": "administrador" }
+    ```
+  - El endpoint detecta el rol usando el token JWT y responde acorde, demostrando un feature flag orientado a aspectos.
+### Feature Flags (Programación Orientada a Aspectos)
 - `GET /feature-flag` — Un solo endpoint que responde diferente según el rol del usuario autenticado:
   - Si no envías token, responde como invitado:
     ```json
@@ -72,6 +86,39 @@ El objetivo es demostrar buenas prácticas de modularidad, uso de MongoDB, auten
     { "feature": "solo administradores", "enabled": true, "role": "administrador" }
     ```
   - El endpoint detecta el rol usando el token JWT y responde acorde, demostrando un feature flag orientado a aspectos.
+
+### Feature Flags con Colecciones (usando el ProyectoTopicosLibreria)
+- `POST /feature-coleccion/album` — (Solo admin) Crea un álbum de canciones de un artista específico.
+  - Body:
+    ```json
+    {
+      "artista": "metro boomin",
+      "cantidad": 4
+    }
+    ```
+  - Si no se especifica `cantidad`, por defecto serán 3 canciones.
+  - Respuesta:
+    ```json
+    {
+      "album": [ { /* canción 1 */ }, { /* canción 2 */ }, ... ]
+    }
+    ```
+
+- `POST /feature-coleccion/playlist` — (admin y user) Crea una playlist de canciones aleatorias.
+  - Body:
+    ```json
+    {
+      "cantidad": 7
+    }
+    ```
+  - Si no se especifica `cantidad`, por defecto serán 5 canciones.
+  - Respuesta:
+    ```json
+    {
+      "playlist": [ { /* canción 1 */ }, { /* canción 2 */ }, ... ]
+    }
+    ```
+  - Requiere token JWT de usuario o admin en el header `Authorization`.
 
 
 ## Configuración
