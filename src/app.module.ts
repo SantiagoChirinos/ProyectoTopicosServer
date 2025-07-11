@@ -11,6 +11,15 @@ import { APP_GUARD, Reflector } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './auth/constants';
 
+/**
+ * Módulo raíz de la aplicación NestJS para el proyecto.
+ * 
+ * Configura la conexión a MongoDB, JWT, módulos funcionales como autenticación, manejo de canciones y usuarios.
+ * 
+ * También establece los controladores globales y la guardia de roles mediante feature flags.
+ * 
+ * @module AppModule
+ */
 @Module({
   imports: [
     AuthModule,

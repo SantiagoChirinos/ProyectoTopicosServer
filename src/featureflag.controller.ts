@@ -28,20 +28,20 @@ export class FeatureFlagController {
   checkFeatureFlag(@Req() req) {
     const authHeader = req.headers['authorization'];
     if (!authHeader) {
-      return { feature: 'acceso-publico', enabled: true, role: 'invitado' };
+      return { feature: 'acceso-publico', enabled: true, role: 'guest' };
     }
     try {
       const token = authHeader.replace('Bearer ', '');
       const payload = this.jwtService.verify(token);
       if (payload.role === 'admin') {
-        return { feature: 'solo administradores', enabled: true, role: 'administrador' };
+        return { feature: 'administradores', enabled: true, role: 'admin' };
       }
       if (payload.role === 'user') {
-        return { feature: 'solo usuarios', enabled: true, role: 'usuario' };
+        return { feature: 'usuarios', enabled: true, role: 'user' };
       }
-      return { feature: 'acceso-público', enabled: true, role: payload.role };
+      return { feature: 'acceso-publico', enabled: true, role: payload.role };
     } catch (e) {
-      return { feature: 'acceso-público', enabled: true, role: 'invitado' };
+      return { feature: 'acceso-publico', enabled: true, role: 'guest' };
     }
   }
 }
