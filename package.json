@@ -1,0 +1,34 @@
+{
+  "name": "proyecto-topicos-server",
+  "version": "1.0.0",
+  "description": "Servidor NestJS para proyecto de tópicos especiales, con Feature Flags y MongoDB.",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.0.0",
+    "@nestjs/core": "^10.0.0",
+    "@nestjs/jwt": "^11.0.0",
+    "@nestjs/mongoose": "^10.0.0",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^10.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.0.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "proyectotopicoslibreria": "github:SantiagoChirinos/ProyectoTopicosLibreria#main",
+    "prueba-topicos": "github:SantiagoChirinos/pruebaTopicos#main"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.0.0",
+    "@nestjs/schematics": "^10.0.0",
+    "@nestjs/testing": "^10.4.19",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.4",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.0.0"
+  }
+}
