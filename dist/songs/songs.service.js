@@ -20,6 +20,9 @@ let SongsService = class SongsService {
     constructor(songModel) {
         this.songModel = songModel;
     }
+    async findByArtista(artista) {
+        return this.songModel.find({ artista }).exec();
+    }
     async insertMany(songs) {
         try {
             return await this.songModel.insertMany(songs, { ordered: false });

@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthModule } from './auth/auth.module';
 import { DataController } from './data.controller';
 import { FeatureFlagController } from './featureflag.controller';
+import { FeatureFlagColeccionController } from './featureflag-coleccion.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SongsModule } from './songs/songs.module';
 import { UsersModule } from './users/users.module';
@@ -21,7 +22,7 @@ import { jwtConstants } from './auth/constants';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  controllers: [DataController, FeatureFlagController],
+  controllers: [DataController, FeatureFlagController, FeatureFlagColeccionController],
   providers: [
     Reflector,
     {

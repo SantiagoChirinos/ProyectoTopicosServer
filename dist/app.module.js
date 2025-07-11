@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const auth_module_1 = require("./auth/auth.module");
 const data_controller_1 = require("./data.controller");
 const featureflag_controller_1 = require("./featureflag.controller");
+const featureflag_coleccion_controller_1 = require("./featureflag-coleccion.controller");
 const mongoose_1 = require("@nestjs/mongoose");
 const songs_module_1 = require("./songs/songs.module");
 const users_module_1 = require("./users/users.module");
@@ -33,7 +34,7 @@ exports.AppModule = AppModule = __decorate([
                 signOptions: { expiresIn: '1h' },
             }),
         ],
-        controllers: [data_controller_1.DataController, featureflag_controller_1.FeatureFlagController],
+        controllers: [data_controller_1.DataController, featureflag_controller_1.FeatureFlagController, featureflag_coleccion_controller_1.FeatureFlagColeccionController],
         providers: [
             core_1.Reflector,
             {
