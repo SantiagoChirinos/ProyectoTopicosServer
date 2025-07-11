@@ -5,6 +5,9 @@ import { UsersModule } from '../users/users.module';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 
+/**
+ * Módulo de autenticación. Registra el controlador, servicio y configuración JWT.
+ */
 @Module({
   imports: [
     UsersModule,
